@@ -7,7 +7,7 @@ home.stateVersion = "24.05";
 
 programs.home-manager.enable = true;
 
-programs.hyprland = {
+wayland.windowManager.hyprland = {
   enable = true;
   settings = {
     "$mod" = "SUPER";
@@ -24,8 +24,8 @@ programs.hyprland = {
     ];
 
     exec-once = [
-      "waybar",
-      "mako",
+      "waybar"
+      "mako"
       "hyprpaper"
     ];
 
@@ -42,10 +42,7 @@ programs.hyprland = {
   };
 };
 
-programs.kitty = {
-  enable = true;
-  theme = "Dracula";
-};
+programs.kitty.enable = true;
 
 programs.wofi = {
   enable = true;
@@ -60,7 +57,6 @@ programs.waybar = {
 
 services.mako = {
   enable = true;
-  defaultTimeout = 5000;
 };
 
 home.packages = with pkgs; [
