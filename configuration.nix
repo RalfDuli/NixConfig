@@ -47,6 +47,8 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  programs.hyprland.enable = true;
+
   services.displayManager.sddm.enable = true;
 
   # Configure keymap in X11
@@ -90,7 +92,6 @@
       hyprland
       waybar
       vim
-      kitty
       wofi
       mako
       hyprpaper
@@ -106,11 +107,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    hyprland
     home-manager
     git
     wget
     curl
+    kitty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
