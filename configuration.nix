@@ -104,11 +104,11 @@
   environment.systemPackages = with pkgs; [
     vim 
     wget
-    discord
     brave
     discord-ptb
     kitty
     git
+    home-manager
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
