@@ -1,9 +1,6 @@
 {config, pkgs, ...}: {
   imports = [];
 
-  #home.username = "ralfd";
-  #home.homeDirectory = "/home/ralfd";
-
   home.packages = with pkgs; [
     fastfetch
   ];
@@ -32,6 +29,10 @@
       vim = "nvim";
     };
   };
+
+  programs.neovim = {
+    enable = true; 
+  };  
 
   programs.kitty = {
     enable = true;

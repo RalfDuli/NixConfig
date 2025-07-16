@@ -86,16 +86,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  #users.users.ralfd = {
-  #  isNormalUser = true;
-  #  description = "ralfd";
-  #  extraGroups = [ "networkmanager" "wheel" ];
-  #  packages = with pkgs; [
-  #  #  thunderbird
-  #  ];
-  #};
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -107,6 +97,7 @@
     discord
     git
     home-manager
+    vim
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
