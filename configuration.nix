@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -47,9 +46,14 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  programs.hyprland.enable = true;
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
-  services.displayManager.sddm.enable = true;
+
+  # Install packages.
+  #programs.steam.enable = true;
+  #virtualisation.docker.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -80,26 +84,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ralfd = {
-    isNormalUser = true;
-    description = "ralfd";
-    extraGroups = [ "networkmanager" "wheel" "audio"];
-    packages = with pkgs; [
-    #  thunderbird
-      hyprland
-      waybar
-      vim
-      wofi
-      mako
-      hyprpaper
-    ];
-  };
-
-  # Install Firefox.
-  programs.firefox.enable = true;
+  # services.xserver.libinput.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -107,12 +92,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    home-manager
-    git
     wget
-    curl
-    kitty
+    brave
+    discord
+    git
+    home-manager
+    vim
   ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

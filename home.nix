@@ -1,66 +1,49 @@
-{config, pkgs, ...}:
+{config, pkgs, ...}: {
+  imports = [];
 
-{
-home.username = "ralfd";
-home.homeDirectory = "/home/ralfd";
-home.stateVersion = "24.05";
+  home.packages = with pkgs; [
+    fastfetch
+  ];
 
-programs.home-manager.enable = true;
+  home.sessionVariables = {
+    EDITOR = "vim";  
+  };
 
-wayland.windowManager.hyprland = {
-  enable = true;
-  settings = {
-    "$mod" = "SUPER";
-    bind = [
-      "$mod, RETURN, exec, kitty"
-      "$mod, R, exec, wofi --show drun"
-      "$mod, Q, killactive"
-      "$mod, H, movefocus, l"
-      "$mod, L, movefocus, r"
-      "$mod, K, movefocus, u"
-      "$mod, J, movefocus, d"
-      "$mod SHIFT, SPACE, toggleFloating"
-      "$mod SHIFT, E, exit"
-    ];
+  home.stateVersion = "25.05";
+ 
+  programs.git = {
+    enable = true;
+    userName = "RalfDuli";
+    userEmail = "ralfduli24@gmail.com";
+  };
 
-    exec-once = [
-      "waybar"
-      "mako"
-      "hyprpaper"
-    ];
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    bashrcExtra = ''
+    ff
+    '';
 
-    input = {
-     kb_layout = "us";
-     follow_mouse = 1; 
-    };
-
-    general = {
-      gaps_in = 5;
-      gaps_out = 10;
-      border_size = 2;
+    shellAliases = {
+      ff = "fastfetch";
+      vim = "nvim";
     };
   };
-};
 
-programs.kitty.enable = true;
+  programs.neovim = {
+    enable = true; 
+  };  
 
-programs.wofi = {
-  enable = true;
-  settings = {
-    prompt = "Search...";
+  programs.kitty = {
+    enable = true;
   };
-};
 
-programs.waybar = {
-  enable = true;
-};
-
-services.mako = {
-  enable = true;
-};
-
-home.packages = with pkgs; [
- hyprpaper
- firefox 
-];
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+    ];
+  };
+ 
+  programs.home-manager.enable = true;
 }
