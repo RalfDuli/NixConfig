@@ -43,7 +43,7 @@
     extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
     ];
-  }
+  };
  
   programs.home-manager.enable = true;
 }
