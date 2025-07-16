@@ -21,7 +21,7 @@
     enable = true;
     enableCompletion = true;
     bashrcExtra = ''
-    echo "Terminal starting!"
+    echo ""
     '';
 
     shellAliases = {
@@ -37,6 +37,13 @@
   programs.kitty = {
     enable = true;
   };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+    ];
+  }
  
   programs.home-manager.enable = true;
 }

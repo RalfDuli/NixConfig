@@ -18,7 +18,7 @@
         ./configuration.nix 
         home-manager.nixosModules.home-manager 
         {
-          users.users.ralfd.isSystemUser = true;
+          users.users.ralfd.isNormalUser = true;
           #users.users.ralfd.initialPassword = "Cur<>ragh1";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
