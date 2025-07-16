@@ -21,7 +21,7 @@
     enable = true;
     enableCompletion = true;
     bashrcExtra = ''
-    echo ""
+    ff
     '';
 
     shellAliases = {
