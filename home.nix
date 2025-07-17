@@ -21,7 +21,7 @@
     enable = true;
     enableCompletion = true;
     bashrcExtra = ''
-    ff
+    fastfetch
     '';
 
     shellAliases = {
@@ -43,6 +43,31 @@
     extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
     ];
+  };
+
+  # Desktop environment configuration
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    settings = {
+      "$mod" = "SUPER";
+      bind =
+        [
+          "$mod, B, exec, brave"
+          ", Print, exec, grimblast copy area"
+        ]
+    };
+  };
+  
+  programs.waybar = {
+    enable = true;
+    style = ''
+
+    '';
+  };
+
+  programs.wofi = {
+    enable = true;
   };
  
   programs.home-manager.enable = true;
