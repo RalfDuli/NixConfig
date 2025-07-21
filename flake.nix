@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self,  nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self,  nixpkgs, home-manager, hyprland, ... }@inputs: {
     
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -29,7 +30,23 @@
             useUserPackages = true;
             users.ralfd = import ./home.nix;
           };
+
+          wayland.windowManager.hyprland = {
+            enable = true;
+           
+            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+            portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+          };
         }
+        
+        # {
+        #   wayland.windowManager.hyprland = {
+        #     enable = true;
+           
+        #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        #     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+        #   };
+        # }
       ];
     };
   };
